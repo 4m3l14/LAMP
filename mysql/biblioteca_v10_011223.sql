@@ -29,7 +29,7 @@ CREATE TABLE `autori` (
   `data_nascita` date DEFAULT NULL,
   `data_morte` date DEFAULT NULL,
   PRIMARY KEY (`id_autore`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `autori` (
 
 LOCK TABLES `autori` WRITE;
 /*!40000 ALTER TABLE `autori` DISABLE KEYS */;
-INSERT INTO `autori` VALUES (1,'Jane Austen','Inglese','1775-12-16','1817-07-18'),(2,'George Orwell','Inglese','1903-06-25','1950-01-21'),(3,'Harper Lee','Americana','1926-04-28','2016-02-19');
+INSERT INTO `autori` VALUES (1,'Jane Austen','Inglese','1775-12-16','1817-07-18'),(2,'George Orwell','Inglese','1903-06-25','1950-01-21'),(3,'Harper Lee','Americana','1926-04-28','2016-02-19'),(4,'Jane Austen','Inglese','1775-12-16','1817-07-18'),(5,'George Orwell','Inglese','1903-06-25','1950-01-21'),(6,'Harper Lee','Americana','1926-04-28','2016-02-19');
 /*!40000 ALTER TABLE `autori` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -53,7 +53,7 @@ CREATE TABLE `categorie` (
   `id_categoria` int NOT NULL AUTO_INCREMENT,
   `nome_categoria` varchar(50) NOT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `categorie` (
 
 LOCK TABLES `categorie` WRITE;
 /*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
-INSERT INTO `categorie` VALUES (1,'Romanzo'),(2,'Saggio'),(3,'Fantascienza'),(4,'Mistero');
+INSERT INTO `categorie` VALUES (1,'Romanzo'),(2,'Saggio'),(3,'Fantascienza'),(4,'Mistero'),(5,'Romanzo'),(6,'Saggio'),(7,'Fantascienza'),(8,'Mistero');
 /*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +84,7 @@ CREATE TABLE `libri` (
   KEY `id_categoria` (`id_categoria`),
   CONSTRAINT `libri_ibfk_1` FOREIGN KEY (`id_autore`) REFERENCES `autori` (`id_autore`),
   CONSTRAINT `libri_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorie` (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `libri` (
 
 LOCK TABLES `libri` WRITE;
 /*!40000 ALTER TABLE `libri` DISABLE KEYS */;
-INSERT INTO `libri` VALUES (1,'Orgoglio e pregiudizio',1,1,1813),(2,'1984',2,3,1949),(3,'Il buio oltre la siepe',3,1,1960),(4,'Guerra e pace',1,1,1869);
+INSERT INTO `libri` VALUES (1,'Orgoglio e pregiudizio',1,1,1813),(2,'1984',2,3,1949),(3,'Il buio oltre la siepe',3,1,1960),(4,'Guerra e pace',1,1,1869),(5,'Orgoglio e pregiudizio',1,1,1813),(6,'1984',2,3,1949),(7,'Il buio oltre la siepe',3,1,1960),(8,'Guerra e pace',1,1,1869);
 /*!40000 ALTER TABLE `libri` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-25 13:28:15
+-- Dump completed on 2023-12-01  8:43:13
