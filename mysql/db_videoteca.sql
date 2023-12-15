@@ -11,8 +11,10 @@ create TABLE attore
 
 CREATE TABLE film(
     ID_film int not null AUTO_INCREMENT PRIMARY KEY,
-    nome varchar(64) not null,
-    genere varchar(64)not null
+    titolo varchar(64) not null,
+    id_attore int
+    id_genere int,
+    anno_pubblicazione int
 );
 
 CREATE TABLE contratto(

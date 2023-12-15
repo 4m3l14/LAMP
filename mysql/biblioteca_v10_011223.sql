@@ -18,6 +18,8 @@
 --
 -- Table structure for table `autori`
 --
+CREATE DATABASE biblioteca;
+USE biblioteca;
 
 DROP TABLE IF EXISTS `autori`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -106,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-12-01  8:59:22
+-- Dump completed on 2023-12-03 19:04:51
