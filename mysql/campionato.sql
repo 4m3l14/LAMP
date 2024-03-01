@@ -25,9 +25,3 @@ create TABLE valutazioni(
     ID_valutazione int not null AUTO_INCREMENT PRIMARY KEY,
     FOREIGN KEY (FK_valutazione)REFERENCES calciatori (ID_calciatore)
 );
-
-
-
-
-
-
