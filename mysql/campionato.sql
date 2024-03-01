@@ -8,7 +8,8 @@ create TABLE calciatori(
     ruolo int (64 )not null,
     stipendio int (64)
     ID_calciatore int not null AUTO_INCREMENT PRIMARY KEY,
-    nascita date
+    ID_capitano int (64),
+    nascita date,
     FOREIGN KEY (FK_calciatore)REFERENCES squadre (ID_squadre)
 );
 
