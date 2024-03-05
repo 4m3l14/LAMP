@@ -50,4 +50,7 @@ WHERE cognome='Rossi';
 DELETE FROM squadre
 WHERE nome_squadra='Verdi';
 
+5)produrre un elenco con i cognomi di tutti i calciatori aventi stipendio>10.000 oridnato su cognome
+6)visualizzare tuitte le informazioni dei calciatori che ricoporono ruolo 'terzino' oi 'portiere'
+7)visualzzare cognome di tutti i calciatori la cui lettera 2 del cognome è 'a' e lultima lettera è 'o'
 */
