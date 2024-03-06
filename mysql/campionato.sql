@@ -51,6 +51,29 @@ DELETE FROM squadre
 WHERE nome_squadra='Verdi';
 
 5)produrre un elenco con i cognomi di tutti i calciatori aventi stipendio>10.000 oridnato su cognome
-6)visualizzare tuitte le informazioni dei calciatori che ricoporono ruolo 'terzino' oi 'portiere'
-7)visualzzare cognome di tutti i calciatori la cui lettera 2 del cognome è 'a' e lultima lettera è 'o'
+SELECT cognome 
+FROM calciatori
+WHERE stipendio>10.000
+ORDER BY cognome;
+
+6)visualizzare tutte le informazioni dei calciatori che ricoporono ruolo 'terzino' oi 'portiere'
+SELECT * 
+FROM calciatori
+WHERE ruolo='terzino'or'portiere';
+
+7)visualzzare cognome di tutti i calciatori la cui lettera 2 del cognome è 'a' e l'ultima lettera è 'o'
+SELECT cognome
+FROM calciatori
+WHERE cognome like '_a%o';
+
+8)produrre elenco con i cognomi dei calciatori seguiti dal nome della loro sqaudra solo per le squadre Napoli, Bologna, Verona (join con where)
+SELECT cognome, nome_sqaudra
+
+
+9)visualizzare qaunti calciatori sono nati prima del 2000
+10)visulaizzare solo una volta in rodijne crescente tutti i voti nella tabella valutazioni
+11)visualizzare il voto più alto, più basso e la media di tutti i voti della tabella valutazioni
+12)per ogni calciatore visulazziare il cognome seguito dal voto massimo, dal voto minimo e dalla media dei voti e da qaunti voti ha ottenuto nelle partite che ha disputato
+13)visualizzare il cognome di ogni giocatore seguito dal cognome del suo capitano
+14)visualizzare i nomi delle sqaudre che non hanno calciatori
 */
