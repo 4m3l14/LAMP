@@ -3,37 +3,62 @@ CREATE DATABASE IF NOT EXISTS Campionato;
 USE Campionato;
 
 -- Creazione della tabella "Squadre"
-create TABLE squadre(
-    nome_squadra varchar(64) not null,
-    ID_squadra int not null AUTO_INCREMENT PRIMARY KEY
+CREATE TABLE squadre (
+    nome_squadra VARCHAR(64) NOT NULL,
+    ID_squadra INT NOT NULL AUTO_INCREMENT PRIMARY KEY
 );
 SHOW TABLES;
 
+-- Inserimento di dati nella tabella "Squadre"
+INSERT INTO squadre (nome_squadra, ID_squadra) VALUES
+('Napoli', 7),
+('Bologna', 8),
+('Roma', 9),
+('Verdi', 1),
+('Verona', 2);
+
 -- Creazione della tabella "Calciatori"
-create TABLE calciatori(
-    cognome varchar(64),
-    ruolo varchar (64),
-    stipendio int,
-    ID_calciatore int not null AUTO_INCREMENT PRIMARY KEY,
-    ID_capitano int,
-    nascita date,
-    FK_squadre int,
+CREATE TABLE calciatori (
+    cognome VARCHAR(64),
+    ruolo VARCHAR(64),
+    stipendio INT,
+    ID_calciatore INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    ID_capitano INT,
+    nascita DATE,
+    FK_squadre INT,
     FOREIGN KEY (FK_squadre) REFERENCES squadre (ID_squadra)
 );
 SHOW TABLES;
 
+-- Inserimento di dati nella tabella "Calciatori"
+INSERT INTO calciatori (cognome, ruolo, stipendio, ID_calciatore, ID_capitano, nascita, FK_squadre) VALUES
+('Bianchi', 'terzino', 10000, 3, 1, '2005-05-10', 7),
+('Zeng', 'attaccante', 15000, 18, 4, '1998-01-09', 8),
+('Hu', 'attaccante', 9000, 10, 1, '2000-04-23', 1),
+('Gialli', 'difensore', 20000, 8, 3, '2002-09-27', 1),
+('Giolitti', 'difensore', 25000, 2, 3, '2001-11-29', 3),
+('Castro', 'portiere', 12000, 5, 5, '1999-12-30', 9);
 
 -- Creazione della tabella "Valutazioni"
-create TABLE valutazioni(
-    voto int (64),
-    ID_valutazione int not null AUTO_INCREMENT PRIMARY KEY,
-    FK_calciatori int,
+CREATE TABLE valutazioni (
+    voto INT,
+    ID_valutazione INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    FK_calciatori INT,
     FOREIGN KEY (FK_calciatori) REFERENCES calciatori (ID_calciatore)
 );
 SHOW TABLES;
 
+-- Inserimento di dati nella tabella "Valutazioni"
+INSERT INTO valutazioni (voto, ID_valutazione, FK_calciatori) VALUES
+(8, 1, 6),
+(7, 2, 3),
+(6, 3, 7),
+(9, 4, 2),
+(5, 5, 5);
+
+
 /*
-1)QUERY CHE MODIFICA IL CAMPO CALCIATORI 
+1)QUERY che modifica il campo 'Calciatori'
 ALTER TABLE calciatori 
 CHANGE COLUMN ruolo ruolo VARCHAR(64);
 
@@ -67,7 +92,7 @@ FROM calciatori
 WHERE cognome like '_a%o';
 
 8)produrre elenco con i cognomi dei calciatori seguiti dal nome della loro sqaudra solo per le squadre Napoli, Bologna, Verona (join con where)
-SELECT cognome, nome_sqaudra
+SELECT cognome, nome_squadra
 
 
 9)visualizzare qaunti calciatori sono nati prima del 2000
