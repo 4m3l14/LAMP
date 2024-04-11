@@ -36,7 +36,7 @@ INSERT INTO calciatori (cognome, ruolo, stipendio, ID_calciatore, ID_capitano, n
 ('Zeng', 'attaccante', 15000, 18, 4, '1998-01-09', 8),
 ('Hu', 'attaccante', 9000, 10, 1, '2000-04-23', 1),
 ('Gialli', 'difensore', 20000, 8, 3, '2002-09-27', 1),
-('Giolitti', 'difensore', 25000, 2, 3, '2001-11-29', 3),
+('Giolitti', 'difensore', 25000, 2, 3, '2001-11-29', 2),
 ('Castro', 'portiere', 12000, 5, 5, '1999-12-30', 9);
 
 -- Creazione della tabella "Valutazioni"
@@ -50,9 +50,9 @@ SHOW TABLES;
 
 -- Inserimento di dati nella tabella "Valutazioni"
 INSERT INTO valutazioni (voto, ID_valutazione, FK_calciatori) VALUES
-(8, 1, 6),
+(8, 1, 18),
 (7, 2, 3),
-(6, 3, 7),
+(6, 3, 8),
 (9, 4, 2),
 (5, 5, 5);
 
