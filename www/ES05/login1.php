@@ -5,27 +5,11 @@ define('DB_NAME', 'ES05');
 define('DB_USERNAME', 'ES05_user'); 
 define('DB_PASSWORD', 'mia_password');
 
-//Form di login
-$html_form = <<<FORM
-<p class='error'>$errmsg</p>
-<form action="$_SERVER[PHP_SELF]" method="post">
-  <label for="email"> </label><input type="text" name="email" placeholder="Email" required/><br />
-  <label for="password"> </label><input type="password" name="password" placeholder="Password" required/><br />
-  <input type="submit" value="Login" /><input type="reset" value="Cancel" />
-</form>
-FORM;
-
-$html_link = "Non hai un account? <a href='register.php'>Registrati adesso</a>.<br />";
-$html_link .= "Hai dimenticato la password? <a href='pwd_reset.php'>Resetta la password</a>.<br />";
-$html_link .= "<a href='index.php'>Torna alla Home Page</a>.<br />";
-
 session_start();
 
 // Recupera le credenziali dalla richiesta POST
 $username = $_POST['username'] ?? "";
 $password = $_POST['password'] ?? "";
-$postreq = $_SERVER['REQUEST_METHOD'] == 'POST';
-
 
 // Connessione al database
 $conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -48,12 +32,6 @@ if (mysqli_num_rows($result) > 0) {
 
 // Chiudi la connessione al database
 mysqli_close($conn);
-
-
-$html = $html_form;
-$html .= $html_link;
-
-
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +41,20 @@ $html .= $html_link;
 </head>
 <body>
     <h3>Pagina di login</h3>
-    <?=$html?>
+    <?=$errmsg?>
+    <h4>Credenziali:</h4>
+    <h4>username: admin</h4>
+    <h4>password: admin</h4>
+
+    <form method="POST" action="">
+        <label for="username">Nome utente:</label>
+        <input type="text" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required><br><br>
+
+        <input type="submit" value="Accedi">
+    </form>
 </body>
 </html>
 
