@@ -52,8 +52,6 @@ mysqli_close($conn);
 
 $html = $html_form;
 $html .= $html_link;
-
-
 ?>
 
 <!DOCTYPE html>

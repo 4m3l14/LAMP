@@ -19,7 +19,7 @@ if (!$conn) {die("Connessione fallita: " . mysqli_connect_error());}
 echo "Connessione al database riuscita<br>";
 
 // Esegui la query per verificare le credenziali dell'utente
-$query = "SELECT * FROM utente WHERE Username = '$username' AND Password = '$password';";
+$query = "SELECT * FROM utente WHERE username = '$username' AND Password = '$password';";
 $result = mysqli_query($conn, $query);
 echo $query."<br>";
 
