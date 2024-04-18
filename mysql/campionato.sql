@@ -113,13 +113,13 @@ FROM valutazioni
 ORDER BY voto;
 
 11)visualizzare il voto più alto, più basso e la media di tutti i voti della tabella valutazioni
-SELECT MAX(voto) AS voto_massimo, MIN(voto) AS voto_minimo, AVG(voto) AS media_voti
+SELECT MAX(voto), MIN(voto), AVG(voto)
 FROM valutazioni;
 
-12)per ogni calciatore visulazziare il cognome seguito dal voto massimo, dal voto minimo e dalla media dei voti e da qaunti voti ha ottenuto nelle partite che ha disputato
-SELECT c.cognome, MAX(v.voto) AS voto_massimo, MIN(v.voto) AS voto_minimo, AVG(v.voto) AS media_voti, COUNT(*) AS totale_voti
+12)per ogni calciatore visulazziare il cognome seguito dal voto massimo, dal voto minimo e dalla media dei voti e da quanti voti ha ottenuto nelle partite che ha disputato
+SELECT c.cognome, MAX(v.voto), MIN(v.voto), AVG(v.voto), COUNT(*)
 FROM calciatori c
-JOIN valutazioni v ON c.ID_calciatore = v.FK_calciatori
+JOIN valutazioni v ON v.FK_calciatori = c.ID_calciatore
 GROUP BY c.cognome;
 
 13)visualizzare il cognome di ogni giocatore seguito dal cognome del suo capitano
@@ -127,20 +127,20 @@ SELECT c1.cognome AS cognome_giocatore, c2.cognome AS cognome_capitano
 FROM calciatori c1
 LEFT JOIN calciatori c2 ON c1.ID_capitano = c2.ID_calciatore;
 
-14)visualizzare i nomi delle sqaudre che non hanno calciatori
+14)visualizzare i nomi delle squadre che non hanno calciatori
 SELECT s.nome_squadra
 FROM squadre s
 LEFT JOIN calciatori c ON s.ID_squadra = c.FK_squadre
 WHERE c.FK_squadre IS NULL;
 
 15) -- Calcola la media di tutte le valutazioni
-SELECT AVG(voto) AS media_generale
+SELECT AVG(voto)
 FROM valutazioni;
 -- Trova i calciatori con una media inferiore alla media generale
 SELECT c.cognome
 FROM calciatori c
 JOIN valutazioni v ON c.ID_calciatore = v.FK_calciatori
-GROUP BY c.ID_calciatore, c.cognome
+GROUP BY c.ID_calciatore,
 HAVING AVG(v.voto) < (SELECT AVG(voto) FROM valutazioni);
 
 16)creare una vista che fornisce i cognomi dei calciatori con una media inferiore alla media generale delle valutazioni
@@ -151,10 +151,9 @@ JOIN valutazioni v ON c.ID_calciatore = v.FK_calciatori
 GROUP BY c.ID_calciatore, c.cognome
 HAVING AVG(v.voto) < (SELECT AVG(voto) FROM valutazioni);
 
-
 17)vista logica che mostri l'ID_calciatore, il cognome e la media dei calciatori con una media maggiore o uguale a 2
 CREATE VIEW Calciatori_Media_Maggiore AS
-SELECT c.ID_calciatore, c.cognome, AVG(v.voto) AS media_voti
+SELECT c.ID_calciatore, c.cognome, AVG(v.voto) 
 FROM calciatori c
 JOIN valutazioni v ON c.ID_calciatore = v.FK_calciatori
 GROUP BY c.ID_calciatore, c.cognome
