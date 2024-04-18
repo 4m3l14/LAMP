@@ -56,7 +56,6 @@ INSERT INTO valutazioni (voto, ID_valutazione, FK_calciatori) VALUES
 (9, 4, 2),
 (5, 5, 5);
 
-
 /*
 1)QUERY che modifica il campo 'Calciatori'
 ALTER TABLE calciatori 
@@ -109,9 +108,28 @@ FROM calciatori
 WHERE YEAR(nascita) < 2000;
 
 10)visulaizzare solo una volta in ordine crescente tutti i voti nella tabella valutazioni
+SELECT DISTINCT voto
+FROM valutazioni
+ORDER BY voto ASC;
 
 11)visualizzare il voto più alto, più basso e la media di tutti i voti della tabella valutazioni
+SELECT MAX(voto) AS voto_massimo, MIN(voto) AS voto_minimo, AVG(voto) AS media_voti
+FROM valutazioni;
+
 12)per ogni calciatore visulazziare il cognome seguito dal voto massimo, dal voto minimo e dalla media dei voti e da qaunti voti ha ottenuto nelle partite che ha disputato
+SELECT c.cognome, MAX(v.voto) AS voto_massimo, MIN(v.voto) AS voto_minimo, AVG(v.voto) AS media_voti, COUNT(*) AS totale_voti
+FROM calciatori c
+JOIN valutazioni v ON c.ID_calciatore = v.FK_calciatori
+GROUP BY c.cognome;
+
 13)visualizzare il cognome di ogni giocatore seguito dal cognome del suo capitano
+SELECT c1.cognome AS cognome_giocatore, c2.cognome AS cognome_capitano
+FROM calciatori c1
+LEFT JOIN calciatori c2 ON c1.ID_capitano = c2.ID_calciatore;
+
 14)visualizzare i nomi delle sqaudre che non hanno calciatori
+SELECT s.nome_squadra
+FROM squadre s
+LEFT JOIN calciatori c ON s.ID_squadra = c.FK_squadre
+WHERE c.FK_squadre IS NULL;
 */
