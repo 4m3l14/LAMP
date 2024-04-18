@@ -86,7 +86,7 @@ WHERE stipendio>10000
 ORDER BY cognome;
 
 
-6)visualizzare tutte le informazioni dei calciatori che ricoporono ruolo 'terzino' o i 'portiere'
+6)visualizzare tutte le informazioni dei calciatori che ricoporono ruolo 'terzino' o di 'portiere'
 SELECT * 
 FROM calciatori
 WHERE ruolo = 'terzino' OR ruolo = 'portiere';
@@ -96,10 +96,10 @@ SELECT cognome
 FROM calciatori
 WHERE cognome like '_a%o';
 
-8)produrre elenco con i cognomi dei calciatori seguiti dal nome della loro sqaudra solo per le squadre Napoli, Bologna, Verona (join con where)
+8)produrre elenco con i cognomi dei calciatori seguiti dal nome della loro squadra solo per le squadre Napoli, Bologna, Verona (join con where)
 SELECT c.cognome, s.nome_squadra
-FROM calciatori c
-JOIN squadre s ON c.FK_squadre = s.ID_squadra
+FROM calciatori AS c
+JOIN squadre AS s ON c.FK_squadre = s.ID_squadra
 WHERE s.nome_squadra IN ('Napoli', 'Bologna', 'Verona');
 
 9)visualizzare qaunti calciatori sono nati prima del 2000
@@ -132,4 +132,31 @@ SELECT s.nome_squadra
 FROM squadre s
 LEFT JOIN calciatori c ON s.ID_squadra = c.FK_squadre
 WHERE c.FK_squadre IS NULL;
+
+15) -- Calcola la media di tutte le valutazioni
+SELECT AVG(voto) AS media_generale
+FROM valutazioni;
+-- Trova i calciatori con una media inferiore alla media generale
+SELECT c.cognome
+FROM calciatori c
+JOIN valutazioni v ON c.ID_calciatore = v.FK_calciatori
+GROUP BY c.ID_calciatore, c.cognome
+HAVING AVG(v.voto) < (SELECT AVG(voto) FROM valutazioni);
+
+16)creare una vista che fornisce i cognomi dei calciatori con una media inferiore alla media generale delle valutazioni
+CREATE VIEW Calciatori_Media_Inferiore AS
+SELECT c.cognome
+FROM calciatori c
+JOIN valutazioni v ON c.ID_calciatore = v.FK_calciatori
+GROUP BY c.ID_calciatore, c.cognome
+HAVING AVG(v.voto) < (SELECT AVG(voto) FROM valutazioni);
+
+
+17)vista logica che mostri l'ID_calciatore, il cognome e la media dei calciatori con una media maggiore o uguale a 2
+CREATE VIEW Calciatori_Media_Maggiore AS
+SELECT c.ID_calciatore, c.cognome, AVG(v.voto) AS media_voti
+FROM calciatori c
+JOIN valutazioni v ON c.ID_calciatore = v.FK_calciatori
+GROUP BY c.ID_calciatore, c.cognome
+HAVING AVG(v.voto) >= 2;
 */
