@@ -19,7 +19,7 @@ if (!$conn) {die("Connessione fallita: " . mysqli_connect_error());}
 echo "Connessione al database riuscita<br>";
 
 // Esegui la query per verificare le credenziali dell'utente
-$query = "SELECT * FROM utente WHERE username = '$username' AND Password = '$password';";
+$query = "SELECT * FROM utente WHERE Username = '$username' AND Password = '$password';";
 $result = mysqli_query($conn, $query);
 echo $query."<br>";
 
@@ -41,7 +41,7 @@ mysqli_close($conn);
 </head>
 <body>
     <h3>Pagina di login</h3>
-    <?=$errmsg?>
+    <?php if (isset($error_message)) echo '<p style="color: red;">' . $error_message . '</p>'; ?>
     <h4>Credenziali:</h4>
     <h4>username: admin</h4>
     <h4>password: admin</h4>
