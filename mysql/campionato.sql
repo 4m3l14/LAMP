@@ -110,7 +110,7 @@ WHERE YEAR(nascita) < 2000;
 10)visulaizzare solo una volta in ordine crescente tutti i voti nella tabella valutazioni
 SELECT DISTINCT voto
 FROM valutazioni
-ORDER BY voto ASC;
+ORDER BY voto;
 
 11)visualizzare il voto più alto, più basso e la media di tutti i voti della tabella valutazioni
 SELECT MAX(voto) AS voto_massimo, MIN(voto) AS voto_minimo, AVG(voto) AS media_voti
